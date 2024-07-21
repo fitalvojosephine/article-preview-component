@@ -1,0 +1,240 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --very-dark-grayish-blue: hsl(217, 19%, 35%);
+  --desaturated-dark-blue: hsl(214, 17%, 51%);
+  --grayish-blue: hsl(212, 23%, 69%);
+  --light-grayish-blue: hsl(210, 46%, 95%);
+  --white: #ffffff;
+  --font-manrope: "Manrope", sans-serif;
+  --font-size: 0.8125rem;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--light-grayish-blue);
+  font-family: var(--font-manrope);
+  font-size: var(--font-size);
+  font-weight: 500;
+}
+
+.container__card {
+  display: grid;
+  grid-template-columns: 285px minmax(300px, 445px);
+  max-width: 45.625rem;
+  border-radius: 0.625rem;
+}
+
+.container__card--img-box {
+  overflow: hidden;
+  border-radius: 0.625rem 0 0 0.625rem;
+}
+
+.container__card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left;
+}
+
+.container__card-text {
+  background: var(--white);
+  padding: 2rem 2.5rem;
+  border-radius: 0 0.625rem 0.625rem 0;
+}
+
+.card__description {
+  color: var(--desaturated-dark-blue);
+  font-size: inherit;
+  line-height: 1.5;
+  margin-bottom: 1.125rem;
+}
+
+.card__title {
+  font-size: 1.25rem;
+  color: var(--very-dark-grayish-blue);
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
+.card__author-img {
+  width: 3.125rem;
+  border-radius: 50%;
+}
+
+.author__card-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card__author {
+  display: flex;
+  align-items: center;
+}
+
+.card__author-user {
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 50%;
+  margin-right: 0.9375rem;
+}
+
+.card__author-profile {
+  display: flex;
+  flex-direction: column;
+}
+
+.card__author-name {
+  color: var(--very-dark-grayish-blue);
+  font-size: var(--font-size);
+}
+
+.card__author-published {
+  color: var(--grayish-blue);
+  font-size: var(--font-size);
+}
+
+.card__share {
+  position: relative;
+}
+
+.card__share-button {
+  padding: 0.375rem;
+  border-radius: 1.25rem;
+  font-size: 1.25rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: var(--desaturated-dark-blue);
+  background-color: var(--light-grayish-blue);
+}
+
+.card__share-button:hover,
+.card__share-button.active {
+  background-color: var(--desaturated-dark-blue);
+  color: var(--light-grayish-blue);
+}
+
+.card__share-option.active {
+  --scale: 1;
+  visibility: visible;
+}
+
+.card__share-option {
+  --scale: 0;
+  --translateX: -50%;
+  --translateY: 0;
+  transform: translate(var(--translateX), var(--translateY)) scale(var(--scale));
+  transform-origin: bottom;
+  visibility: visible;
+  transition: all 0.25s ease;
+  background-color: var(--very-dark-grayish-blue);
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 28px);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.0625rem 2.5rem;
+  border-radius: 0.625rem;
+  box-shadow: 0 5px 20px -5px #0003;
+}
+
+.card__share-option--span {
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3125rem;
+  color: var(--grayish-blue);
+  margin-right: 0.3125rem;
+}
+
+ion-icon {
+  display: block;
+}
+
+.card__social-icon {
+  font-size: 1.375rem;
+  text-decoration: none;
+  color: var(--white);
+}
+
+.card__share-option::after {
+  content: "";
+  background-color: var(--very-dark-grayish-blue);
+  width: 1.25rem;
+  height: 1.25rem;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -60%) rotate(45deg);
+}
+
+@media (max-width: 48rem) {
+  .container__card {
+    grid-template-columns: 1fr;
+    overflow: hidden;
+    max-width: 19.375rem;
+  }
+
+  .container__card--img-box {
+    height: 11.25rem;
+  }
+
+  .container__card-img {
+    border-radius: 0.625rem 0.625rem 0 0;
+  }
+
+  .container__card--img-box,
+  .container__card-text {
+    border-radius: 0;
+  }
+
+  .container__card-text {
+    padding: 1.875rem 1.75rem 1.25rem;
+  }
+
+  .card__title {
+    font-size: 0.9375rem;
+  }
+
+  .card__description {
+    margin-bottom: 2.8125rem;
+  }
+
+  .author__card-info {
+    position: relative;
+  }
+
+  .card__share {
+    position: static;
+    z-index: 1;
+  }
+
+  .card__share-button {
+    font-size: 1rem;
+  }
+
+  .card__share-option {
+    inset: -1.25rem -1.75rem;
+    border-radius: 0;
+    padding: 0.9375rem 1.875rem;
+    z-index: -1;
+    scale: 1;
+    --translateX: 0;
+    --translateY: 100%;
+  }
+
+  .card__share-option.active {
+    --translateY: 0;
+  }
+}
